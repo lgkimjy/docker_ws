@@ -86,3 +86,5 @@ RUN echo "export ROS_MASTER_URI=http://localhost:11311" >> $HOME/.bashrc
 RUN echo "alias cw='cd ~/catkin_ws'" >> $HOME/.bashrc
 RUN echo "alias cs='cd ~/catkin_ws/src'" >> $HOME/.bashrc
 RUN echo "alias cm='cd ~/catkin_ws && catkin_make'" >> $HOME/.bashrc
+RUN echo "alias eb='vi ~/.bashrc'" >> $HOME/.bashrc
+RUN echo "alias sb='source ~/.bashrc'" >> $HOME/.bashrc
