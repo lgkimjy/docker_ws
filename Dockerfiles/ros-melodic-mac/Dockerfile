@@ -25,8 +25,10 @@ RUN apt-get update && apt-get install -y \
     ntp \
     whois \
     tree \
+    python2-pip \
     python3-pip \
     python3-tk \
+    python-matplotlib \
     sudo
 
 # locale-gen = language settings
@@ -68,6 +70,8 @@ RUN mkdir -p $HOME/catkin_ws/src
 RUN /bin/bash -c "source /opt/ros/melodic/setup.bash; cd catkin_ws/src; catkin_init_workspace; catkin_make -C ${HOME}/catkin_ws"
 
 # node들을 실행할때 필요한 환경변수들은 미리 초기화 한다.
+RUN echo "#PS1='🐳  \[\033[92m\]\h\[\033[0m\]: \[\033[1;34m\]\W\[\033[0;35m\] \[\033[0m\]'" >> $HOME/.bashrc
+RUN echo "PS1='🐳 \[\033[92m\]\h\[\033[0m\]:\033[94m\]\w\033[94m\]\a\033[97m\]$ '" >> $HOME/.bashrc
 RUN echo "source /opt/ros/melodic/setup.bash" >> $HOME/.bashrc
 RUN echo "source $HOME/catkin_ws/devel/setup.bash" >> $HOME/.bashrc
 RUN echo "export ROS_HOSTNAME=localhost" >> $HOME/.bashrc
@@ -76,6 +80,6 @@ RUN echo "# export ROS_HOSTNAME=$(hostname -I | awk '{print $1}')" >> $HOME/.bas
 RUN echo "# export ROS_MASTER_URI=http://$(hostname -I | awk '{print $1}'):11311" >> $HOME/.bashrc
 RUN echo "alias cw='cd ~/catkin_ws'" >> $HOME/.bashrc
 RUN echo "alias cs='cd ~/catkin_ws/src'" >> $HOME/.bashrc
-RUN echo "alias cm='cd ~/catkin_ws && catkin_make'" >> $HOME/.bashrc
+RUN echo "alias cm='catkin_make -C ~/catkin_ws/'" >> $HOME/.bashrc
 RUN echo "alias eb='vi ~/.bashrc'" >> $HOME/.bashrc
 RUN echo "alias sb='source ~/.bashrc'" >> $HOME/.bashrc
