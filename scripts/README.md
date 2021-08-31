@@ -1,4 +1,4 @@
-## Geneal form
+## General form
 ```
 $ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 ```
