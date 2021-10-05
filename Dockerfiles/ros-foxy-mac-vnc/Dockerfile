@@ -42,8 +42,8 @@ ENV LC_ALL en_US.UTF-8
 # VNC Display settings
 ENV DEBIAN_FRONTEND=noninteractive \
     DISPLAY=:0.0 \
-    DISPLAY_WIDTH=1920 \
-    DISPLAY_HEIGHT=1080 \
+    DISPLAY_WIDTH=1340 \
+    DISPLAY_HEIGHT=800 \
     RUN_XTERM=yes \
     RUN_FLUXBOX=yes
 COPY . /app
